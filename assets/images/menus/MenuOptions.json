@@ -16,5 +16,6 @@
 	"options_color": "EA71FD",
 	"awards_color": "9271FD",
 
-	"main_font": "vcr.ttf"
+	"main_font": "vcr.ttf",
+	"loading_screens": ["loading1", "loading2", "loading3"]
 }

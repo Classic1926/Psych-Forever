@@ -32,6 +32,8 @@ class LoadingState extends MusicBeatState
 	var callbacks:MultiCallback;
 	var targetShit:Float = 0;
 
+	var loadingScreens:Array<String>;
+
 	function new(target:FlxState, stopMusic:Bool, directory:String)
 	{
 		super();
@@ -44,9 +46,11 @@ class LoadingState extends MusicBeatState
 	var loadBar:FlxSprite;
 	override function create()
 	{
+		loadingScreens = MainMenuState.loadingScreens;
 		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
 		add(bg);
-		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/menus/loadingScreens/loading${FlxG.random.int(1,2)}.png', IMAGE));
+		var loadingPath = 'images/menus/loadingScreens/' + loadingScreens[FlxG.random.int(0, loadingScreens.length - 1)] + '.png';
+		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath(loadingPath, IMAGE));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
@@ -111,11 +115,6 @@ class LoadingState extends MusicBeatState
 		super.update(elapsed);
 		funkay.setGraphicSize(Std.int(FlxG.width));
 		funkay.updateHitbox();
-		if(controls.ACCEPT)
-		{
-			funkay.setGraphicSize(Std.int(funkay.width + 60));
-			funkay.updateHitbox();
-		}
 
 		if(callbacks != null) {
 			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);

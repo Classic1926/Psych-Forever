@@ -40,6 +40,7 @@ typedef MenuOptionsIG =
 	var awards_color:String;
 
 	var main_font:String;
+	var loading_screens:Array<String>;
 }
 
 class MainMenuState extends MusicBeatState
@@ -65,6 +66,8 @@ class MainMenuState extends MusicBeatState
 		"EA71FD", // Options BG Color 7
 		"9271FD", // Awards BG Color 8
 	];
+
+	public static var loadingScreens:Array<String> = ["loading1", "loading2", "loading3"];
 
 	public static var choosenFont:String = 'vcr.ttf';
 	
@@ -98,6 +101,10 @@ class MainMenuState extends MusicBeatState
 			if (!menuOptions.awards) optionShit.remove('awards');
 			if (!menuOptions.credits) optionShit.remove('credits');
 			if (!menuOptions.donate) optionShit.remove('donate');
+		}
+		loadingScreens = menuOptions.loading_screens;
+		if (loadingScreens.length < 1) {
+			loadingScreens = ["loading1", "loading2", "loading3"]; // Fallback
 		}
 
 		loadMenuJson();

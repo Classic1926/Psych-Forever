@@ -713,7 +713,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'MISC',
 		'EXPERIMENTAL',
 		'MOVEMENTS',
-		'TOP RIGHT TEXT',
+		'OVERLAY TEXT', // This took me 2 years to realize that it said the wrong text. Yet in older versions it said the right text.
 		'VISUALS'
 	];
 	static var noCheckbox:Array<String> = [
@@ -758,7 +758,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Focus Loss Pause',
 		'Skip Splash',
 		#if !mobile
-		'TOP RIGHT TEXT',
+		'OVERLAY TEXT',
 		'FPS Counter',
 		'Memory Usage',
 		'Version',
@@ -1098,10 +1098,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 			case 'Note Delay':
 				daText = "Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.";
 			case 'FPS Counter','Memory Usage','Version','Current Mod':
-				daText = 'Uncheck to hide the ${options[curSelected]} from the top right.';
+				daText = 'Uncheck to hide the ${options[curSelected]} from the overlay.';
 			case 'Low Quality':
 				daText = "If checked, disables some background details,\ndecreases loading times and improves performance.";
-			case 'Persistent Cached Data': // Feel like there is a reason why this setting is removed in newer Psych Engines. Probably because this can cause memory leaks?
+			case 'Persistent Cached Data': // Feel like there is a reason why this setting is removed in newer Psych Engines. Probably because this can cause memory leaks? Should I remove it?
 				daText = "If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.";
 			case 'Anti-Aliasing':
 				daText = "If unchecked, disables anti-aliasing, increases performance\nat the cost of the graphics not looking as smooth.";
@@ -1114,9 +1114,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 			case 'Anti-Mash':
 				daText = "If checked, mashing will make you miss.\n(If Ghost Tapping is off this does nothing)";
 			case 'Swearing':
-				daText = "If unchecked, your mom won't be angry at you.";
+				daText = "If unchecked, removes swearing from dialogues.";
 			case 'Violence':
-				daText = "If unchecked, you won't get disgusted as frequently.";
+				daText = "If unchecked, tones down the blood and violence.";
 			case 'Note Splashes':
 				daText = "If unchecked, hitting \"Sick!\" notes won't show particles.";
 			case 'Opponent Note Splashes':
